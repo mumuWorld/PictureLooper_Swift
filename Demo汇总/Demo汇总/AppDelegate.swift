@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         return true
     }
@@ -47,6 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 func MMLog<T>(message:T,file:String = #file,funcName:String = #function,lineNum:Int = #line){
     #if DEBUG
         let fileName = (file as NSString).lastPathComponent
-        print("\(fileName):[\(funcName)](\(lineNum))---->\(message)")
+        print("🌈\(fileName):[\(funcName)](\(lineNum))---->\(message)")
     #endif
 }

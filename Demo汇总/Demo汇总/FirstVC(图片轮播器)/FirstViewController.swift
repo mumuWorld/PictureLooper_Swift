@@ -8,25 +8,32 @@
 
 import UIKit
 
-class FirstViewController: UIViewController ,PictureLoopDelegate{
+class FirstViewController: UIViewController {
 
-    var pictureLoop: PictureLoopView?
+    var pictureLoop: MMInfiniteCycleView?
+    
     private lazy var pictureArray:[String] = {
         var arr:[String] = Array()
-        for i in 0..<5 {
-            arr.append(String.init(format: "%i", i))
-        }
+        arr.append("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2709494055,3727918964&fm=26&gp=0.jpg")
+        arr.append("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1120375073,4039537831&fm=26&gp=0.jpg")
+        arr.append("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=933865351,281155046&fm=26&gp=0.jpg")
+        arr.append("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=225806716,638269697&fm=26&gp=0.jpg")
+
+        
+//        for i in 0..<5 {
+//            arr.append(String.init(format: "%i", i))
+//        }
         return arr
     }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let frame = CGRect.init(x: 0, y: 64, width: UIScreen.main.bounds.width, height: 200)
-        
-        pictureLoop = PictureLoopView.init(pictureArray: pictureArray, frame: frame)
-        pictureLoop?.delegate = self
+        let tFrame = CGRect.init(x: 0, y: 64, width: UIScreen.main.bounds.width, height: 200)
+        pictureLoop = MMInfiniteCycleView(frame: tFrame, placeHolderImage: nil, isInfinite: true, sourceArr: pictureArray)
+//        pictureLoop = PictureLoopView.init(pictureArray: pictureArray, frame: frame)
+//        pictureLoop?.delegate = self
         view.addSubview(pictureLoop!)
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
@@ -50,8 +57,5 @@ class FirstViewController: UIViewController ,PictureLoopDelegate{
 
 }
 extension FirstViewController {
-    func pictureLoopImageClick(pictureView: PictureLoopView, withTag btnTag: Int) {
-        MMLog(message: PictureLoopView.description())
-        MMLog(message: "当前第 \(btnTag) 张图片")
-    }
+
 }
